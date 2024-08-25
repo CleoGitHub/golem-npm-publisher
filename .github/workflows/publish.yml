@@ -22,6 +22,10 @@ jobs:
         with:
           node-version: 20
       - run: | 
+          if [[ -z "${{ secrets.token }}" ]]; then
+            echo "GITHUB_TOKEN is not set. Aborting."
+            exit 1
+          fi
           ORG="${{ github.event.organization.login }}"
           cd sdk/JS/ || { echo "Directory change failed"; exit 1; }
 
