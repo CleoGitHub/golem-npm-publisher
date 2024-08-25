@@ -67,7 +67,7 @@ jobs:
             else
               # Handle the case where RESPONSE is valid JSON but without errors
               FILTERED_VERSIONS=$(echo "$RESPONSE" | jq -r '.[]' | grep "^${VERSION}")
-              echo "FILTERED_VERSIONS: $FILTERED_VERSIONS"
+              echo "FILTERED_VERSIONS: \n$FILTERED_VERSIONS"
 
               # Find the highest version from the filtered list
               HIGHEST_VERSION=$(echo "$FILTERED_VERSIONS" | sort -V | tail -n 1)
