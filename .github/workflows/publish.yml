@@ -32,7 +32,7 @@ jobs:
           echo "@$ORG:registry=https://npm.pkg.github.com" >> .npmrc
 
           # Login and publish the package
-          npm login --scope=@$($ORG) --auth-type=legacy
+          npm login --scope=@$(echo $ORG) --auth-type=legacy
           echo ""
 
           VERSION=$(cat VERSION)
