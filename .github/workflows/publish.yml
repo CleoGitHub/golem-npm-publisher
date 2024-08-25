@@ -7,7 +7,6 @@ on:
       secrets:
         token:
           required: true
-
   
 jobs:
   publish-gpr:
