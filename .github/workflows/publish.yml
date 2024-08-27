@@ -94,6 +94,8 @@ jobs:
 
           # Update the version in package.json
           jq --arg VERSION "$VERSION" '.version = $VERSION' package.json > temp.json && mv temp.json package.json
+          echo $ORGINAL_PACKAGE_NAME
+          echo $PACKAGE_NAME
           sed -i -e 's/"name": "$ORGINAL_PACKAGE_NAME"/"name": "$PACKAGE_NAME"/g' package.json
           # sed -i -e 's/"name": "$ORGINAL_PACKAGE_NAME"/"name": "$PACKAGE_NAME"/g' package-lock.json
 
