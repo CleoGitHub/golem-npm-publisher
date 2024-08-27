@@ -94,7 +94,7 @@ jobs:
           # Update the version in package.json
           jq --arg VERSION "$VERSION" '.version = $VERSION' package.json > temp.json && mv temp.json package.json
           sed -i -e 's/"name\": "$PACKAGE_NAME"/"name": "@$ORG\/$PACKAGE_NAME"/g' package.json
-          sed -i -e "s/\"name\": \"$PACKAGE_NAME\"/\"name\": \"@$ORG\/$PACKAGE_NAME\"/g" package-lock.json
+          sed -i -e 's/"name\": "$PACKAGE_NAME"/"name": "@$ORG\/$PACKAGE_NAME"/g' package-lock.json
 
           npm publish --access public
 
