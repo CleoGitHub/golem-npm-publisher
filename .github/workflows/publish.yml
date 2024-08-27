@@ -39,7 +39,7 @@ jobs:
           npm login --scope=@$(echo $ORG) --auth-type=legacy
           echo ""
 
-          VERSION=$(cat VERSION)
+          VERSION=$(cat ../../VERSION)
           echo "Current VERSION: $VERSION"
 
           # Extract the last numeric part of the version
