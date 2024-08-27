@@ -90,16 +90,12 @@ jobs:
             VERSION=$(echo "$VERSION" | sed -E 's/(.*[^0-9])([0-9]+)$/echo "\1$((\2+1))"/e')
           fi
 
-          echo "New VERSION: $VERSION"
-
           # Update the version in package.json
           jq --arg VERSION "$VERSION" '.version = $VERSION' package.json > temp.json && mv temp.json package.json
           echo $ORGINAL_PACKAGE_NAME
           echo $PACKAGE_NAME
           sed -i -e "s|\"name\": \"$ORGINAL_PACKAGE_NAME\"|\"name\": \"$PACKAGE_NAME\"|g" package.json
-          # sed -i -e 's/"name": "$ORGINAL_PACKAGE_NAME"/"name": "$PACKAGE_NAME"/g' package-lock.json
-
-          cat package.json
+          sed -i -e "s|\"name\": \"$ORGINAL_PACKAGE_NAME\"|\"name\": \"$PACKAGE_NAME\"|g" package-lock.json
 
           npm publish --access public
 
